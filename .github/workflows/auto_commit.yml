@@ -20,7 +20,7 @@ jobs:
     - name: Commit and push if it changed
       uses: github-actions-x/commit@v2.9
       with:
-        push-branch: 'master'
+        push-branch: 'main'
         email: RonggolawePutri577@gmail.com
         name: Putri577
         commit-message: 'Updated data'
