@@ -2,7 +2,7 @@ name: Auto Commit
 
 on:
   schedule:
-    - cron: '45 * * * *'  
+    - cron: '2 * * * *'  
 
 jobs:
   build:
@@ -11,10 +11,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@main
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }} 
 
-    - name: Fetch data
+    - name: Make changes
       run: |
-        # Replace this with the command you use to fetch data
         date "+%Y-%m-%d %H:%M:%S" >> data.txt
 
     - name: Commit and push if it changed
