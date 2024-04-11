@@ -11,17 +11,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@main
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }} 
+      run:
+        git clone https://${{ secrets.API_GITHUB_TOKEN }}@github.com/putri577/putri577.git
 
     - name: Make changes
-      run: |
+      run: 
+        cd putri577
         date "+%Y-%m-%d %H:%M:%S" >> data.txt
 
     - name: Commit and push if it changed
       run: |
-        git config --global user.email "RonggolawePutri577@gmail.com"
-        git config --global user.name "Putri577"
-        git add -A
-        git diff --quiet && git diff --staged --quiet || (git commit -m 'Automated commit'; git push)
+        cd putri577
+        git config --local user.email "RonggolawePutri577@gmail.com"
+        git config --local user.name "Putri577"
+        git add .
+        git commit -m 'update today date'
+        git push origin main
