@@ -9,17 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@main
-      run:
+    - name: clone code
+      run: |
         git clone https://${{ secrets.API_GITHUB_TOKEN }}@github.com/putri577/putri577.git
 
-    - name: Make changes
-      run: 
+    - name: make changes
+      run: |
         cd putri577
         date "+%Y-%m-%d %H:%M:%S" >> data.txt
 
-    - name: Commit and push if it changed
+    - name: commit and push if it changed
       run: |
         cd putri577
         git config --local user.email "RonggolawePutri577@gmail.com"
